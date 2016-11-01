@@ -1,0 +1,53 @@
+body {
+  /*background: #000;*/
+  font-family: sans-serif;
+}
+
+img{
+  height: auto;
+  width: auto;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.Row_0{
+  display: flex;
+  height: 50%;
+  width: 50%;
+}
+
+.Row_1{
+  display: flex;
+  height: 50%;
+  width: 50%;
+}
+
+.Row_2{
+  display: flex;
+  height: 50%;
+  width: 50%;
+}
+
+.Row_3{
+  display: flex;
+  height: 50%;
+  width: 50%;
+}
+
+.Column_0 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.Column_1 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.Column_2 {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
