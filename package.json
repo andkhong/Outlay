@@ -4,8 +4,9 @@
   "description": "",
   "main": "./client/index.js",
   "scripts": {
-    "start": "node ./src/index.js",
-    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors"
+    "start": "node src/index.js",
+    "build": "NODE_ENV=production webpack --config ./webpack.prod.config.js --progress --colors",
+    "postinstall": "npm run build"
   },
   "author": "An Khong",
   "engines": {
@@ -13,6 +14,15 @@
   },
   "license": "ISC",
   "devDependencies": {
+  },
+  "dependencies": {
+    "axios": "^0.15.0",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
+    "request": "^2.75.0",
+
     "babel": "^6.5.2",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -27,13 +37,5 @@
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.6.1",
     "webpack-hot-middleware": "^2.12.2"
-  },
-  "dependencies": {
-    "axios": "^0.15.0",
-    "body-parser": "^1.15.2",
-    "express": "^4.14.0",
-    "react": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "request": "^2.75.0"
   }
 }
