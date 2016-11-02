@@ -17,10 +17,6 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './../index.html'));
-})
-
 app.listen(port, function(){
   console.log(`Listening at http://localhost:`, port)
 })
