@@ -3,11 +3,14 @@ body {
   font-family: sans-serif;
 }
 
-img{
-  height: auto;
-  width: auto;
-  max-width: 300px;
-  max-height: 300px;
+img {
+  height: 100%;
+  width: 100%;
+  min-width: 250px;
+  min-height: 250px;
+  max-height: 250px;
+  max-width: 250px;
+  padding-bottom: 10px;
 }
 
 .Row_0{
@@ -35,18 +38,21 @@ img{
 }
 
 .Column_0 {
+  margin-left: auto;
   display: block;
   height: 100%;
   width: 100%;
 }
 
 .Column_1 {
+  margin-left: 10px;
   display: block;
   height: 100%;
   width: 100%;
 }
 
 .Column_2 {
+  margin-left: 10px;
   display: block;
   height: 100%;
   width: 100%;
