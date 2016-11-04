@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devltools: 'eval-source-map',
+  devtool: 'eval-source-map',
   entry: [
       'webpack-hot-middleware',
       path.join(__dirname, './src/client/index.js')

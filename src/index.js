@@ -15,8 +15,13 @@ if (process.env.NODE_ENV !== 'production') {
     noInfo: true
   }));
   app.use(webpackHotMiddleware(compiler));
+
+  // app.listen(port, function(){
+  //   console.log(`Development Mode: Listening at http://localhost:`, port)
+  // })
+
 }
 
 app.listen(port, function(){
-  console.log(`Listening at http://localhost:`, port)
+  console.log(`Build Mode: Listening at http://localhost:`, port)
 })

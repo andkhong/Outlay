@@ -1,5 +1,5 @@
 1. NPM INSTALL
-2. NPM RUN POSTINSTALL
+2. Developers: NPM RUN BUILD then run NPM START
 3. Open browser to localhost:8080
 4. When changes are made, refresh browser!
 5. Type Instagram User's Profile into Input Field

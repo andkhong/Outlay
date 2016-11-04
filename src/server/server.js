@@ -15,6 +15,7 @@ module.exports = {
     })
 
     // Middleware to handle Static Assets
+    // Comment out during developement mode
     app.use('/public', express.static('public'));
 
     app.get('/', (req, res) => {
