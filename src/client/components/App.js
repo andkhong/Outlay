@@ -5,7 +5,7 @@ import axios from 'axios'
 export default class App extends React.Component {
   constructor(props){
     super(props)
-    this.state = { user: '', feed: { ImageCounts: 0 } };
+    this.state = { user: '', feed: { ImageCounts: 12 } };
   }
 
   handleInputChange(e){
@@ -15,9 +15,8 @@ export default class App extends React.Component {
   }
 
   getInstagramPics(e){
-    let self
-    e.preventDefault()
-    self = this
+    let self = this;
+    e.preventDefault();
     axios.post('/', {
       user: this.state.user
     })
@@ -33,17 +32,19 @@ export default class App extends React.Component {
   }
 
   changeLayout(e){
-    let reader = new FileReader();
+    const reader = new FileReader();
     let ImageUpload = e.target.files[0];
 
     reader.onloadend = () => {
-      var readImage = reader.result;
-      var metaData = this.state.feed;
-      for(var i = 0; i <= metaData.ImageCounts; i++){
-        var temp = metaData[i];
+      let readImage = reader.result;
+      let metaData = this.state.feed;
+
+      for(let i = 0; i <= metaData.ImageCounts; i++){
+        let temp = metaData[i];
         metaData[i] = readImage;
         readImage = temp;
       }
+      if(metaData.ImageCounts < 12) metaData.ImageCounts++;
       this.setState({
           feed: metaData
       })
@@ -68,11 +69,12 @@ export default class App extends React.Component {
              onChange={this.handleInputChange.bind(this)}
              placeholder="Type in Instagram User!"
            />
+         <button> Preview Instagram User! </button>
         </form>
 
         <input
           type="file"
-           onChange={this.changeLayout.bind(this)}
+          onChange={this.changeLayout.bind(this)}
         />
 
       <div className={style.ImageFeed}>

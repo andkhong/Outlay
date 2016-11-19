@@ -8,6 +8,7 @@ let scraperController = {
     // Request User's Instagram HTML Page
     request(link + user, function(error, response, html){
       if(!error && response.statusCode == 200){
+
         // Initial Declared Variables
         let data;
         let metaData = {}
