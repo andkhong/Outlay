@@ -41,6 +41,14 @@ export default class App extends React.Component {
     reader.readAsDataURL(ImageUpload)
   }
 
+  undoImage(){
+    let copy = this.state.feed;
+    copy = copy.splice(1);
+    this.setState({
+      feed: copy
+    });
+  }
+
   renderImages(){
     return this.state.feed.map(function(item, index){
       return <div className={style.column} key={index} > <img key={index} src={ item } /> </div>
@@ -65,6 +73,12 @@ export default class App extends React.Component {
           type="file"
           onChange={this.changeLayout.bind(this)}
         />
+
+        <button
+          onClick={this.undoImage.bind(this)}
+        >
+          Undo
+        </button>
 
         <div className={style.ImageFeed}>
             <div className={style.Row_0}> { container.slice(0,3) } </div>
