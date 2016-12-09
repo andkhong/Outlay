@@ -15,7 +15,6 @@
   },
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "react": "^15.3.1",

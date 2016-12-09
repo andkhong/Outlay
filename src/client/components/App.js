@@ -5,7 +5,7 @@ import axios from 'axios'
 export default class App extends React.Component {
   constructor(props){
     super(props)
-    this.state = { user: '', feed: { ImageCounts: 12 } };
+    this.state = { user: '', feed: [] };
   }
 
   handleInputChange(e){
@@ -22,9 +22,8 @@ export default class App extends React.Component {
     })
     .then(function(response){
       self.setState({
-        feed: response.data
+        feed: response.data.images
       })
-      console.log(self.state)
     })
     .catch(function(error){
       console.log(error)
@@ -34,32 +33,22 @@ export default class App extends React.Component {
   changeLayout(e){
     const reader = new FileReader();
     let ImageUpload = e.target.files[0];
-
     reader.onloadend = () => {
-      let readImage = reader.result;
-      let metaData = this.state.feed;
-
-      for(let i = 0; i <= metaData.ImageCounts; i++){
-        let temp = metaData[i];
-        metaData[i] = readImage;
-        readImage = temp;
-      }
-      if(metaData.ImageCounts < 12) metaData.ImageCounts++;
-      this.setState({
-          feed: metaData
-      })
+      let copy = this.state.feed;
+      copy.unshift(reader.result);
+      this.setState({ feed: copy })
     }
     reader.readAsDataURL(ImageUpload)
-    ImageUpload = null;
+  }
+
+  renderImages(){
+    return this.state.feed.map(function(item, index){
+      return <div className={style.column} key={index} > <img key={index} src={ item } /> </div>
+    });
   }
 
   render(){
-    let container = [];
-    for(let i = 0; i <= this.state.feed.ImageCounts; i++){
-      let column = "Column_" + i%3;
-      container[i] = <div className={style[column]} key={i} > <img key={i} src={ this.state.feed[i] } /> </div>
-    }
-
+    let container = this.renderImages();
     return(
       <div className={style.HelloWorld}>
         <form onSubmit={this.getInstagramPics.bind(this)}>
@@ -77,12 +66,12 @@ export default class App extends React.Component {
           onChange={this.changeLayout.bind(this)}
         />
 
-      <div className={style.ImageFeed}>
-          <div className={style.Row_0}> { container.slice(0,3) } </div>
-          <div className={style.Row_1}> { container.slice(3,6) } </div>
-          <div className={style.Row_2}> { container.slice(6,9) } </div>
-          <div className={style.Row_3}> { container.slice(9,12) } </div>
-      </div>
+        <div className={style.ImageFeed}>
+            <div className={style.Row_0}> { container.slice(0,3) } </div>
+            <div className={style.Row_1}> { container.slice(3,6) } </div>
+            <div className={style.Row_2}> { container.slice(6,9) } </div>
+            <div className={style.Row_3}> { container.slice(9,12) } </div>
+        </div>
 
       </div>
     )

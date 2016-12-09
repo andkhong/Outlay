@@ -10,24 +10,21 @@ let scraperController = {
       if(!error && response.statusCode == 200){
 
         // Initial Declared Variables
-        let data;
         let metaData = {}
-        let ImageCounts = -1;
+        let imageArray = [];
 
         // Work on HTML String to gather Images & Image Counts
-        data = html.split('"thumbnail_src": "')
+        let data = html.split('"thumbnail_src": "')
         for(let i = 1; i < data.length; i++){
           let tempString = '';
           for(let j = 0; j < data[i].length; j++){
             if(data[i][j] === ',') break;
             tempString += data[i][j];
           }
-          ImageCounts ++;
-          metaData[ImageCounts] = tempString;
+          imageArray.push(tempString);
         }
-
+        metaData.images = imageArray;
         // Once request is processed, send the API to route endpoint
-        metaData['ImageCounts'] = ImageCounts;
         res.send(metaData)
       }
     })
