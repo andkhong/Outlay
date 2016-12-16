@@ -1,6 +1,9 @@
 import React from 'react';
-import style from './../style/App.css'
+import style from './../style/App.css';
 import axios from 'axios'
+
+import Feed from './Feed.jsx';
+import User from './User.jsx';
 
 export default class App extends React.Component {
   constructor(props){
@@ -49,16 +52,9 @@ export default class App extends React.Component {
     });
   }
 
-  renderImages(){
-    return this.state.feed.map(function(item, index){
-      return <div className={style.column} key={index} > <img key={index} src={ item } /> </div>
-    });
-  }
-
   render(){
-    let container = this.renderImages();
     return(
-      <div className={style.HelloWorld}>
+      <div>
         <form onSubmit={this.getInstagramPics.bind(this)}>
           <input
              type="text"
@@ -74,20 +70,28 @@ export default class App extends React.Component {
           onChange={this.changeLayout.bind(this)}
         />
 
-        <button
-          onClick={this.undoImage.bind(this)}
-        >
+        <button onClick={this.undoImage.bind(this)}>
           Undo
         </button>
 
-        <div className={style.ImageFeed}>
-            <div className={style.Row_0}> { container.slice(0,3) } </div>
-            <div className={style.Row_1}> { container.slice(3,6) } </div>
-            <div className={style.Row_2}> { container.slice(6,9) } </div>
-            <div className={style.Row_3}> { container.slice(9,12) } </div>
-        </div>
-
+        <Feed container={this.state.feed} />
       </div>
     )
   }
 }
+
+
+// import React from 'react';
+//
+// import Feed from './Feed.jsx';
+// import User from './User.jsx';
+
+// const App = ({ children }) => (
+//   <div>
+//     <User />
+//     { children }
+//     <Feed />
+//   </div>
+// )
+//
+// export default App;
