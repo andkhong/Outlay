@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './../style/App.css';
+import style from './App.css';
 import axios from 'axios'
 
 import Feed from './Feed.jsx';
@@ -27,9 +27,6 @@ export default class App extends React.Component {
       self.setState({
         feed: response.data.images
       })
-    })
-    .catch(function(error){
-      console.log(error)
     })
   }
 
@@ -73,25 +70,8 @@ export default class App extends React.Component {
         <button onClick={this.undoImage.bind(this)}>
           Undo
         </button>
-
         <Feed container={this.state.feed} />
       </div>
     )
   }
-}
-
-
-// import React from 'react';
-//
-// import Feed from './Feed.jsx';
-// import User from './User.jsx';
-
-// const App = ({ children }) => (
-//   <div>
-//     <User />
-//     { children }
-//     <Feed />
-//   </div>
-// )
-//
-// export default App;
+};

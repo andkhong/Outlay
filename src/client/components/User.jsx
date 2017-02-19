@@ -1,6 +1,6 @@
 import React from 'react';
 
-import style from './../style/App.css';
+import style from './App.css';
 
 export default class User extends React.Component {
 
