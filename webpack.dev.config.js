@@ -12,11 +12,6 @@ module.exports = {
     publicPath: '/public'
   },
   plugins: [
-    new ExtractTextPlugin({
-			filename: "js/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
-			disable: false,
-			allChunks: true
-		}),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()

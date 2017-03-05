@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 module.exports = {
   devtool: 'source-map',
@@ -12,11 +12,6 @@ module.exports = {
     publicPath: '/public/'
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: "js/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
-      disable: false,
-      allChunks: true
-    }),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       minimize: true,
@@ -34,7 +29,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        loaders: ['react-hot', 'babel']
       },
       {
         test: /\.scss?$/,
