@@ -12,6 +12,11 @@ module.exports = {
     publicPath: '/public'
   },
   plugins: [
+    new ExtractTextPlugin({
+			filename: "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
+			disable: false,
+			allChunks: true
+		}),
     new webpack.NoErrorsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin()
@@ -20,7 +25,8 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        include: path.join(__dirname, 'src')
+        include: path.join(__dirname, 'src'),
+        loaders: ['react-hot', 'babel']
       },
       {
         test: /\.scss$/,
