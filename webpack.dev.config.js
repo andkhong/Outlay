@@ -13,7 +13,7 @@ module.exports = {
   },
   plugins: [
     new ExtractTextPlugin({
-			filename: "css/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
+			filename: "js/[name].css?[hash]-[chunkhash]-[contenthash]-[name]",
 			disable: false,
 			allChunks: true
 		}),
