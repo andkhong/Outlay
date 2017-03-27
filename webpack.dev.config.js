@@ -1,39 +1,50 @@
-const path = require('path');
+const { resolve } = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
+  devServer: {
+    hot: true,
+    contentBase: resolve(__dirname, 'dist'),
+    publicPath: '/'
+  },
+  context: resolve(__dirname, 'src'),
   entry: [
-      'webpack-hot-middleware',
-      path.join(__dirname, './src/client/index.js')
+    'react-hot-loader/patch',
+    'webpack-dev-server/client?http://localhost:8080',
+    'webpack/hot/only-dev-server',
+    './index.js'
   ],
   output: {
-    path: '/',
-    publicPath: '/public'
+    filename: 'bundle.js',
+    path: resolve(__dirname, 'dist'),
+    publicPath: '/dist'
   },
-  plugins: [
-    new webpack.NoErrorsPlugin(),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin()
-  ],
   module: {
-    loaders: [
+    rules: [
       {
-        test: /\.jsx?$/,
-        include: path.join(__dirname, 'src'),
-        loaders: ['react-hot', 'babel']
+        test: /\.js$/,
+        use: [
+          'babel-loader',
+        ],
+        exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        loader: 'style-loader!css-loader!sass-loader'
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader?modules',
+          'postcss-loader',
+        ],
       },
-      {
-          test: /\.css$/,
-          loader: 'style-loader!css-loader?modules=true&localIdentName=[name]__[local]___[hash:base64:5]'
-      }
     ],
-    resolve:{
-      extensions: ['', '.js', '.json', '.jsx', '.css', '.scss']
-    }
-  }
-}
+  },
+
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    // enable HMR globally
+
+    new webpack.NamedModulesPlugin(),
+    // prints more readable module names in the browser console on HMR updates
+  ],
+};

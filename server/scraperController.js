@@ -1,6 +1,6 @@
 const request = require('request');
 
-let scraperController = {
+const scraperController = {
   getInstragramPics: function(req, res, next){
     const link = 'https://www.instagram.com';
     const user = '/' + req.body.user + '/';

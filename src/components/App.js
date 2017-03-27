@@ -2,8 +2,8 @@ import React from 'react';
 import style from './App.css';
 import axios from 'axios'
 
-import Feed from './Feed.jsx';
-import User from './User.jsx';
+import Feed from './Feed';
+import User from './User';
 
 export default class App extends React.Component {
   constructor(props){
