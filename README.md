@@ -19,5 +19,4 @@ However, upon the request, what we do get back is the HTML is raw string text wh
 
 ### TODO
 1. Improve UI Design
-2. Convert to Redux
-3. Improve Scraper
+2. Improve Scraper
