@@ -1,14 +1,14 @@
 {
   "name": "outlay",
   "version": "1.0.0",
-  "description": "An Instagram layout preview web app",
+  "description": "An Instagram Image Layout Preview App",
   "author": "An Khong",
-  "main": "./client/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node server/server.js",
     "dev": "webpack-dev-server",
     "build": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "postinstall": "npm run build"
+    "postinstall": "npm install && npm run build"
   },
   "engines": {
     "node": "7.0.0",
