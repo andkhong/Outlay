@@ -8,7 +8,7 @@
     "start": "node server/server.js",
     "dev": "webpack-dev-server",
     "build": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "postinstall": "npm run build"
+    "postinstall": "webpack --config ./webpack.prod.config.js --progress --colors"
   },
   "engines": {
     "node": "7.2.1",
