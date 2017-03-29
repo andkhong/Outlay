@@ -1,16 +1,17 @@
 import React from 'react';
-import style from './App.css';
+import style from './../App.css';
 
 export default class Feed extends React.Component {
 
   renderImages(){
-    return this.props.container.map( (item, index) => {
+    const { feed } = this.props;
+    return feed.map( (item, index) => {
       return <div className={style.column} key={index} > <img key={index} src={ item.slice(0, item.length-1) } /> </div>
     });
   }
 
   render(){
-    let container = this.renderImages();
+  let container = this.renderImages();
     return(
       <div className={style.ImageFeed}>
           <div className={style.Row_0}> { container.slice(0, 3) } </div>

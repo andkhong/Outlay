@@ -8,11 +8,9 @@ const scraperController = {
     // Request User's Instagram HTML Page
     request(link + user, function(error, response, html){
       if(!error && response.statusCode == 200){
-
         // Initial Declared Variables
         let metaData = {}
         let imageArray = [];
-
         // Work on HTML String to gather Images & Image Counts
         let data = html.split('"thumbnail_src": "')
         for(let i = 1; i < data.length; i++){
