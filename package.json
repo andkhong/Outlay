@@ -8,11 +8,10 @@
     "start": "node server/server.js",
     "dev": "webpack-dev-server",
     "build": "webpack --config ./webpack.prod.config.js --progress --colors",
-    "postinstall": "webpack --config ./webpack.prod.config.js --progress --colors"
+    "postinstall": "webpack --config ./webpack.prod.config.js --progress --colorsg"
   },
   "engines": {
-    "node": "7.2.1",
-    "npm": "3.10.10"
+    "node": "7.2.1"
   },
   "license": "ISC",
   "dependencies": {
