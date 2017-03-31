@@ -6,3 +6,11 @@ export function uploadImage(image){
     image
   }
 }
+
+const UNDO_IMAGE = "UNDO_IMAGE";
+
+export function undoImage(){
+  return {
+    type: UNDO_IMAGE,
+  }
+};

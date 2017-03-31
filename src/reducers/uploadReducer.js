@@ -2,7 +2,13 @@ function uploadReducer(state = { upload: [] }, action){
   switch (action.type) {
     case "UPLOAD_IMAGE":
       let newArray = [...state.upload];
-      newArray.unshift(action.image);
+      newArray.push(action.image);
+      return Object.assign({}, state, {
+        upload: newArray
+      })
+    case "UNDO_IMAGE":
+      newArray = [...state.upload];
+      newArray.pop();
       return Object.assign({}, state, {
         upload: newArray
       })

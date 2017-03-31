@@ -5,6 +5,11 @@ export default class Upload extends Component {
     super(props);
     this.state = { image: null }
   }
+  undoUpload(e){
+    e.preventDefault();
+    const { undo } = this.props;
+    undo();
+  }
   uploadImage(e){
     e.preventDefault();
     if(this.state.image){
@@ -21,17 +26,19 @@ export default class Upload extends Component {
     }
     reader.readAsDataURL(image);
   }
-
   render(){
     return(
-      <form onSubmit={this.uploadImage.bind(this)}>
-        <input
-          type="file"
-          accept="image/x-png,image/jpeg"
-          onChange={this.handleImageInput.bind(this)}
-        />
-        <button> Upload Image </button>
-      </form>
+      <div>
+        <form onSubmit={this.uploadImage.bind(this)}>
+          <input
+            type="file"
+            accept="image/x-png,image/jpeg"
+            onChange={this.handleImageInput.bind(this)}
+          />
+          <button> Upload Image </button>
+        </form>
+        <button onClick={this.undoUpload.bind(this)}> Undo </button>
+      </div>
     )
   }
 }

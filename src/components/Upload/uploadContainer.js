@@ -7,6 +7,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     upload: (file) => {
       dispatch(uploadActionCreators.uploadImage(file))
+    },
+    undo: () => {
+      dispatch(uploadActionCreators.undoImage())
     }
   }
 }

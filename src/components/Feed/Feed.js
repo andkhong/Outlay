@@ -4,8 +4,9 @@ import style from './../App.css';
 export default class Feed extends React.Component {
 
   renderImages(){
-    const { feed } = this.props;
-    return feed.map( (item, index) => {
+    const { upload, feed } = this.props;
+    let newFeed = upload.reverse().concat(feed);
+    return newFeed.map( (item, index) => {
       return <div className={style.column} key={index} > <img key={index} src={ item.slice(0, item.length-1) } /> </div>
     });
   }
